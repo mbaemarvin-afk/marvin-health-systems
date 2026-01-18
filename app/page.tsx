@@ -100,7 +100,7 @@ export default function Home() {
       focus: "Digital rights, inclusion, and ethical technology in Africa.",
     },
     {
-      title: "Diploma in Kenya Registered Nursing",
+      title:  Kenya Registered Nursing",
       org: "Nakuru West Medical College",
       focus: "Clinical foundation and healthcare delivery expertise.",
     },
@@ -268,7 +268,10 @@ export default function Home() {
             </div>
 
             <div className="p-5 rounded-2xl bg-slate-800">
-              <p className="text-slate-300 text-sm">LinkedIn</p>
+              <p className="text-slate-300 text-sm">LinkedIn</p>www.linkedin.com/in/
+marvin-mutugi-0248a2128
+Vanity URL name
+
               <p className="font-semibold">Marvin Mutugi</p>
               <p className="text-slate-300 text-sm mt-1">
                 (Tip: replace with your profile link when ready)
