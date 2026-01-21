@@ -1,12 +1,11 @@
 // app/chat/page.tsx
-const CHATBOT_URL = "https://wa.me/254732213597";
+const CHATBOT_URL = "PASTE_YOUR_CHATBOT_LINK_HERE";
 
 export default function ChatPage() {
   return (
     <main style={{ minHeight: "100vh", background: "#0b1220", color: "#e8eefc" }}>
       <div style={{ maxWidth: 800, margin: "0 auto", padding: 28 }}>
         <h1 style={{ margin: 0, fontSize: 28 }}>Chat with Marvin’s AI</h1>
-
         <p style={{ marginTop: 10, opacity: 0.85, lineHeight: 1.6 }}>
           This assistant is for general health education and guidance. It does not replace a licensed clinician.
           For emergencies, contact local emergency services.
@@ -21,7 +20,9 @@ export default function ChatPage() {
             border: "1px solid rgba(255,255,255,0.12)",
           }}
         >
-          <p style={{ margin: 0, opacity: 0.9 }}>Click below to open the chatbot in WhatsApp:</p>
+          <p style={{ margin: 0, opacity: 0.9 }}>
+            Click below to open the chatbot in a new tab:
+          </p>
 
           <a
             href={CHATBOT_URL}
@@ -38,11 +39,11 @@ export default function ChatPage() {
               fontWeight: 700,
             }}
           >
-            💬 Open WhatsApp Chatbot
+            💬 Open Chatbot
           </a>
 
           <p style={{ marginTop: 12, fontSize: 12, opacity: 0.75 }}>
-            If WhatsApp doesn’t open, save the number and try again: +254 732 213 597
+            Tip: If the button doesn’t open, copy and paste the link directly in your browser.
           </p>
         </div>
 
