@@ -22,6 +22,9 @@ const CALENDLY_URL = "https://calendly.com/app/scheduling/meeting_types/user/me"
 // Your LinkedIn (correct single-line URL):
 const LINKEDIN_URL = "https://www.linkedin.com/in/marvin-mutugi-0248a2128/";
 
+// New: Live demos page route
+const DEMOS_URL = "/demos";
+
 export default function Page() {
   return (
     <main style={{ minHeight: "100vh", background: "#0b1220", color: "#e8eefc" }}>
@@ -45,9 +48,7 @@ export default function Page() {
 
           <div style={{ opacity: 0.9, fontSize: 18 }}>{TITLE}</div>
 
-          <p style={{ marginTop: 14, opacity: 0.9, maxWidth: 820 }}>
-            {BIO}
-          </p>
+          <p style={{ marginTop: 14, opacity: 0.9, maxWidth: 820 }}>{BIO}</p>
 
           {/* Buttons */}
           <div
@@ -58,11 +59,7 @@ export default function Page() {
               marginTop: 16,
             }}
           >
-            <a
-              href={`tel:${PHONE_E164}`}
-              style={btnPrimary}
-              aria-label="Call Marvin"
-            >
+            <a href={`tel:${PHONE_E164}`} style={btnPrimary} aria-label="Call Marvin">
               📞 Call {PHONE_DISPLAY}
             </a>
 
@@ -78,6 +75,10 @@ export default function Page() {
 
             <a href={CV_PATH} download style={btn} aria-label="Download CV">
               ⬇️ Download CV
+            </a>
+
+            <a href={DEMO_URL_SAFE(DEMOS_URL)} style={btn} aria-label="View Live Demos">
+              🧪 Live Demos
             </a>
 
             <a href="#book" style={btn} aria-label="Go to booking section">
@@ -102,13 +103,62 @@ export default function Page() {
                 {EMAIL}
               </a>
             </span>
+
             <span>
               LinkedIn:{" "}
               <a style={link} href={LINKEDIN_URL} target="_blank" rel="noreferrer">
                 View profile
               </a>
             </span>
+
             <span>Location: {LOCATION}</span>
+          </div>
+        </section>
+
+        {/* NEW: DEMOS / PRODUCTS PREVIEW */}
+        <section style={{ ...card, marginTop: 14 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+            <div>
+              <h2 style={h2}>Live Demos (Prototypes)</h2>
+              <p style={{ ...p, marginTop: 6, maxWidth: 780 }}>
+                These demos showcase how MediReach can improve patient engagement, reduce missed follow-ups,
+                and increase digital health literacy in Kenya and East Africa.
+              </p>
+            </div>
+
+            <a href={DEMO_URL_SAFE(DEMOS_URL)} style={btnPrimary} aria-label="Open demos page">
+              Open /demos →
+            </a>
+          </div>
+
+          <div
+            style={{
+              display: "grid",
+              gap: 12,
+              marginTop: 12,
+              gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            }}
+          >
+            <DemoCard
+              title="AI Nurse Assistant"
+              status="Prototype"
+              description="A nurse-style AI assistant for symptom guidance, patient education, and follow-up reminders."
+            />
+            <DemoCard
+              title="Patient Engagement Platform"
+              status="Prototype"
+              description="A patient journey demo: booking, triage, education, and automated follow-ups in one flow."
+            />
+            <DemoCard
+              title="Smart Clinic Platform"
+              status="Coming soon"
+              description="A smart clinic dashboard demo: appointments, notes, prescriptions, labs, and telehealth."
+            />
+            <DemoCard
+              title="Digital Health Literacy Bot"
+              status="Prototype"
+              description="An interactive bot teaching patients how to use digital health tools (telemedicine, apps, portals)."
+            />
           </div>
         </section>
 
@@ -160,25 +210,19 @@ export default function Page() {
             <div style={miniCard}>
               <h3 style={h3}>Smart Clinic Platform</h3>
               <p style={p}>
-                Designed a hybrid clinic model integrating physical care with
-                telehealth workflows, digital triage, patient follow-up
-                automation, and EMR planning.
+                Designed a hybrid clinic model integrating physical care with telehealth workflows, digital triage,
+                patient follow-up automation, and EMR planning.
               </p>
-              <div style={meta}>
-                Role: Founder & Digital Health Systems Designer
-              </div>
+              <div style={meta}>Role: Founder & Digital Health Systems Designer</div>
             </div>
 
             <div style={miniCard}>
               <h3 style={h3}>Patient Follow-up & Reminder System (WhatsApp)</h3>
               <p style={p}>
-                Designed a WhatsApp-based automation approach for appointment
-                reminders, medication adherence, post-visit follow-ups, and
-                health education messaging.
+                Designed a WhatsApp-based automation approach for appointment reminders, medication adherence,
+                post-visit follow-ups, and health education messaging.
               </p>
-              <div style={meta}>
-                Role: Digital Health Architect & Automation Designer
-              </div>
+              <div style={meta}>Role: Digital Health Architect & Automation Designer</div>
             </div>
 
             <div style={{ ...miniCard, gridColumn: "1 / -1" }}>
@@ -186,9 +230,8 @@ export default function Page() {
                 Vision Programme — Community Eye Care (Village HopeCore International)
               </h3>
               <p style={p}>
-                Led a large-scale community eye care program: vision screening,
-                coordinating specialist clinics, managing referrals, staff CMEs,
-                visual acuity assessments, and continuity of care.
+                Led a large-scale community eye care program: vision screening, coordinating specialist clinics,
+                managing referrals, staff CMEs, visual acuity assessments, and continuity of care.
               </p>
               <div style={meta}>Role: Lead Nurse</div>
             </div>
@@ -198,9 +241,7 @@ export default function Page() {
         {/* BOOKING */}
         <section id="book" style={{ ...card, marginTop: 14 }}>
           <h2 style={h2}>Book an Appointment</h2>
-          <p style={{ ...p, marginTop: 6 }}>
-            Click below to book a call/consultation.
-          </p>
+          <p style={{ ...p, marginTop: 6 }}>Click below to book a call/consultation.</p>
 
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
             <a href={CALENDLY_URL} target="_blank" rel="noreferrer" style={btnPrimary}>
@@ -212,6 +253,10 @@ export default function Page() {
               style={btn}
             >
               Email to Book
+            </a>
+
+            <a href={DEMO_URL_SAFE(DEMOS_URL)} style={btn}>
+              View Live Demos
             </a>
           </div>
 
@@ -238,6 +283,46 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
       <div style={{ marginTop: 10 }}>{children}</div>
     </section>
   );
+}
+
+function DemoCard({
+  title,
+  status,
+  description,
+}: {
+  title: string;
+  status: string;
+  description: string;
+}) {
+  return (
+    <div style={miniCard}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
+        <h3 style={h3}>{title}</h3>
+        <span
+          style={{
+            fontSize: 12,
+            padding: "6px 10px",
+            borderRadius: 999,
+            border: "1px solid rgba(255,255,255,0.18)",
+            background: "rgba(255,255,255,0.06)",
+            height: "fit-content",
+          }}
+        >
+          {status}
+        </span>
+      </div>
+      <p style={{ ...p, marginTop: 10 }}>{description}</p>
+
+      <a href={DEMO_URL_SAFE(DEMOS_URL)} style={{ ...btn, marginTop: 12, display: "inline-block" }}>
+        Open Demo →
+      </a>
+    </div>
+  );
+}
+
+// Safety helper so you never accidentally break the href if you change it later
+function DEMO_URL_SAFE(path: string) {
+  return path.startsWith("/") ? path : `/${path}`;
 }
 
 const card: React.CSSProperties = {
