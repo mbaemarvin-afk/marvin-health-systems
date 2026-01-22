@@ -48,9 +48,25 @@ export default function ChatPage() {
         </div>
 
         <div style={{ marginTop: 18 }}>
-          <a href="/" style={{ color: "#e8eefc", opacity: 0.8 }}>
-            ← Back to Home
-          </a>
+          <div style={{ marginTop: 18 }}>
+  <a
+    href="/"
+    style={{
+      display: "inline-block",
+      padding: "10px 14px",
+      borderRadius: 14,
+      textDecoration: "none",
+      color: "#e8eefc",
+      background: "rgba(255,255,255,0.08)",
+      border: "1px solid rgba(255,255,255,0.14)",
+      fontWeight: 700,
+      cursor: "pointer",
+    }}
+  >
+    ← Back to Home
+  </a>
+</div>
+
         </div>
       </div>
     </main>
