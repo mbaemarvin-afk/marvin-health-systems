@@ -1,11 +1,47 @@
-// app/chat/page.tsx
-const CHATBOT_URL = "PASTE_YOUR_CHATBOT_LINK_HERE";
+"use client";
+
+import { useRouter } from "next/navigation";
+
+const CHATBOT_URL = "https://wa.me/254732213597";
 
 export default function ChatPage() {
+  const router = useRouter();
+
+  function goHome() {
+    // Most reliable navigation
+    router.push("/");
+
+    // Extra fallback (in case router is blocked by something)
+    setTimeout(() => {
+      if (window.location.pathname === "/chat") {
+        window.location.href = "/";
+      }
+    }, 200);
+  }
+
   return (
     <main style={{ minHeight: "100vh", background: "#0b1220", color: "#e8eefc" }}>
-      <div style={{ maxWidth: 800, margin: "0 auto", padding: 28 }}>
+      {/* Fixed Back Button (always clickable) */}
+      <div style={{ position: "fixed", top: 16, left: 16, zIndex: 9999 }}>
+        <button
+          onClick={goHome}
+          style={{
+            padding: "10px 14px",
+            borderRadius: 14,
+            border: "1px solid rgba(255,255,255,0.14)",
+            background: "rgba(255,255,255,0.08)",
+            color: "#e8eefc",
+            fontWeight: 800,
+            cursor: "pointer",
+          }}
+        >
+          ← Back Home
+        </button>
+      </div>
+
+      <div style={{ maxWidth: 800, margin: "0 auto", padding: "28px 16px", paddingTop: 70 }}>
         <h1 style={{ margin: 0, fontSize: 28 }}>Chat with Marvin’s AI</h1>
+
         <p style={{ marginTop: 10, opacity: 0.85, lineHeight: 1.6 }}>
           This assistant is for general health education and guidance. It does not replace a licensed clinician.
           For emergencies, contact local emergency services.
@@ -21,7 +57,7 @@ export default function ChatPage() {
           }}
         >
           <p style={{ margin: 0, opacity: 0.9 }}>
-            Click below to open the chatbot in a new tab:
+            Click below to open the chatbot in WhatsApp:
           </p>
 
           <a
@@ -36,37 +72,15 @@ export default function ChatPage() {
               background: "rgba(255,255,255,0.95)",
               color: "#0b1220",
               textDecoration: "none",
-              fontWeight: 700,
+              fontWeight: 800,
             }}
           >
-            💬 Open Chatbot
+            💬 Open WhatsApp Chatbot
           </a>
 
           <p style={{ marginTop: 12, fontSize: 12, opacity: 0.75 }}>
-            Tip: If the button doesn’t open, copy and paste the link directly in your browser.
+            If WhatsApp doesn’t open, save the number and try again: +254 732 213 597
           </p>
-        </div>
-
-        <div style={{ marginTop: 18 }}>
-          <div style={{ marginTop: 18 }}>
-  <a
-    href="/"
-    style={{
-      display: "inline-block",
-      padding: "10px 14px",
-      borderRadius: 14,
-      textDecoration: "none",
-      color: "#e8eefc",
-      background: "rgba(255,255,255,0.08)",
-      border: "1px solid rgba(255,255,255,0.14)",
-      fontWeight: 700,
-      cursor: "pointer",
-    }}
-  >
-    ← Back to Home
-  </a>
-</div>
-
         </div>
       </div>
     </main>
